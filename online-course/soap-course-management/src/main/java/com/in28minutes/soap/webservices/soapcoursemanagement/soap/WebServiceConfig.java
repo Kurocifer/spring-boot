@@ -14,7 +14,7 @@ import org.springframework.xml.xsd.XsdSchema;
 @EnableWs
 
 @Configuration
-public class WebServiceConfig extends WsConfigurerAd{
+public class WebServiceConfig {
 	
 	@Bean
 	public ServletRegistrationBean messageDispatcherServlet(ApplicationContext context) {
@@ -43,12 +43,6 @@ public class WebServiceConfig extends WsConfigurerAd{
 	@Bean
 	public XsdSchema coursesSchema() {
 		return new SimpleXsdSchema(new ClassPathResource("course-details.xsd"));
-	}
-	
-	@Bean
-	public XwsSecurityInterceptor securityInterceptor () {
-		XwsSecurityInterceptor sercurityInterceptor= new XwsSecurityInterceptor();
-		
 	}
 	
 }
