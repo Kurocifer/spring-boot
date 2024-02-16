@@ -1,0 +1,6 @@
+insert into course(id, name)
+values(3, 'Learn system programming');
+
+select *from course
+
+delete from course where id=2

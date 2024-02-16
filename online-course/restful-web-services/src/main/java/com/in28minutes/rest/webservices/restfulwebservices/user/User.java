@@ -3,7 +3,7 @@ package com.in28minutes.rest.webservices.restfulwebservices.user;
 import java.time.LocalDate;
 
 public class User {
-	private int id;
+	private int id; 
 	private String name;
 	private LocalDate birthDate;
 
