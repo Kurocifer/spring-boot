@@ -1,6 +1,6 @@
-insert into course(id, name)
-values(3, 'Learn system programming');
+insert into course(id, name, author)
+values(0, 'Human nature', 'Vxloyd');
 
 select *from course
 
-delete from course where id=2
+delete from course where id=1
