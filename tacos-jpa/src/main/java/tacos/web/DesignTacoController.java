@@ -1,6 +1,7 @@
 package tacos.web;
 
 
+import java.security.Principal;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
@@ -20,8 +21,10 @@ import tacos.Ingredient;
 import tacos.Ingredient.Type;
 import tacos.Order;
 import tacos.Taco;
+import tacos.User;
 import tacos.data.IngredientRepository;
 import tacos.data.TacoRepository;
+import tacos.data.UserRepository;
 
 @Controller
 @RequestMapping("/design")
@@ -30,15 +33,17 @@ public class DesignTacoController {
 	
 	private final IngredientRepository ingredientRepo;
 	private TacoRepository tacoRepo;
+	private UserRepository userRepo;
 	
 	
 	@Autowired
-	public DesignTacoController(IngredientRepository ingredientRepo, TacoRepository tacoRepo) {
+	public DesignTacoController(IngredientRepository ingredientRepo, TacoRepository tacoRepo, UserRepository userRepo) {
 		super();
 		this.ingredientRepo = ingredientRepo;
 		this.tacoRepo = tacoRepo;
+		this.userRepo = userRepo;
 	}
-	
+
 	@ModelAttribute(name = "order")
 	public Order order() {
 		return new Order();
@@ -48,6 +53,14 @@ public class DesignTacoController {
 	public Taco taco() {
 		return new Taco();
 	}
+	
+	@ModelAttribute(name = "user")
+	public User user(Principal principal) {
+		String username = principal.getName();
+		User user = userRepo.findByUsername(username);
+		return user;
+	}
+	
 
 	@GetMapping
 	public String showDesingForm(Model model) {

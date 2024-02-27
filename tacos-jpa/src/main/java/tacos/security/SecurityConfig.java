@@ -20,6 +20,7 @@ public class SecurityConfig {
 		return new BCryptPasswordEncoder();
 	}
 	
+	/*
 	@Bean
 	public UserDetailsService userDetailsService(UserRepository userRepo) {
 		return username -> {
@@ -30,6 +31,7 @@ public class SecurityConfig {
 			throw new UsernameNotFoundException("User '" + username + "' not found");
 		};
 	}
+	*/
 	
 	@Bean
 	public SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
@@ -45,8 +47,7 @@ public class SecurityConfig {
 		                .clearAuthentication(true).logoutSuccessUrl("/login?logout")
 		                .permitAll();
 		        })
-				.build();		
-				
+				.build();				
 	}
 }
 
