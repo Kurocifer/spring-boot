@@ -1,0 +1,6 @@
+insert into course(id, name, author)
+values(0, 'Human nature', 'Vxloyd');
+
+select *from course
+
+delete from course where id=1
